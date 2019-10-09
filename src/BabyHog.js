@@ -22,13 +22,28 @@ export default class BabyHog extends Component {
     })
   }
 
+  dependingOnColor = () => {
+    if (this.props.eyeColor == "blue") {
+      return BlueBaby
+    }
+    if (this.props.eyeColor == "glowing") {
+      return GlowingBaby
+    }
+    if (this.props.eyeColor == "sun") {
+      return SunBaby
+    }
+    else {
+      return normalBaby
+    }
+  }
+
   render() {
     return (
       <li className="hogbabies">
-        <h1>Name</h1>
+        <h1>Name: {this.props.name} </h1>
         <h3>Weight:</h3>
-        <h3>Hobby:</h3>
-        <h4>Eye Color:</h4>
+        <h3>Hobby: {this.props.hobby} </h3>
+        <h4>Eye Color: {this.props.eyeColor}</h4>
           
         <Button name="+">
           Increase Weight
@@ -38,7 +53,8 @@ export default class BabyHog extends Component {
         </Button>
 
         <div className="hb-wrap">
-          <img src={normalBaby} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+          <img src={this.dependingOnColor()} style={{height: '200px'}} alt="MasterBlasterJrJr" />
+
         </div>
         
       </li>
